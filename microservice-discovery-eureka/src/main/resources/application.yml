@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: ha-eureka
+#配置服务控制台要登录
+security:
+  basic:
+    enabled: true
+  user:
+    name: admin
+    password: admin
+   
+  
+#eureka:
+#  client:
+##只当做eureka服务不当成clinet，当只有单个eureka不需要
+#    register-with-eureka: false
+#    fetch-registry: false
+#    service-url:
+#      defalultZone: http://localhost:8761/eureka
+
+---
+server:
+  port: 8761
+spring:
+  profiles: ha-a
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    service-url:
+#      defaultZone: http://admin:admin@localhost:8762/eureka/,http://admin:admin@localhost:8763/eureka/
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      
+--- 
+server:
+  port: 8762
+spring:
+  profiles: ha-b
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka/,http://admin:admin@localhost:8763/eureka/
+
+--- 
+server:
+  port: 8763
+spring:
+  profiles: ha-c
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka/,http://admin:admin@localhost:8762/eureka/
