@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.example.demo.entity.User;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-@FeignClient(name="SIMPLE-PROVIDER",configuration=UserFeignClientConfig.class)
+@FeignClient(name = "SIMPLE-PROVIDER", configuration = UserFeignClientConfig.class, /**fallback = UserFeignClientFallback.class,**/ fallbackFactory = UserClientfallbackFactory.class)
 public interface UserFeignClient {
-	
+
 	@GetMapping("/provider/{id}")
-	@HystrixCommand(fallbackMethod="findUserByIdFallback")
+	@HystrixCommand(fallbackMethod = "findUserByIdFallback")
 	public User findUserById(@PathVariable("id") Long id);
 }

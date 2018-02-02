@@ -1,0 +1,48 @@
+server:
+  port: 8040
+  
+spring:
+  application:
+    name: gateway-zuul-filter
+    
+security:
+  basic:
+    enabled: true
+  user:
+    name: admin
+    password: admin
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+#zuul:
+#  routes:
+#    simple-provider: /pro/**
+#applicationName 服务重定向到一个新的URL上    
+
+#abcUnique 名称唯一即可
+zuul:
+  routes:
+    abcUnique:
+      path: /pro/** 
+      service-id: simple-provider
+#url为服务器的host
+
+
+#zuul:
+#  routes:
+#    abcUnique:
+#      path: /pro/** 
+#      service-id: simple-provider
+#
+#simple-provider: #这个ribbon要请求serviceId
+#  ribbon:
+#    listOfServers: http://127.0.0.1:8080,http://127.0.0.1:8008    
+    
+
+
+    
+    

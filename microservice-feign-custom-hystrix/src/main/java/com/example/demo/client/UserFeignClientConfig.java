@@ -9,10 +9,10 @@ import feign.Feign;
 @Configuration
 public class UserFeignClientConfig {
 
-	@Bean
-	@Scope("prototype")
-	public Feign.Builder feignBuilder() {
-		return Feign.builder();
-	}
+//	@Bean
+//	@Scope("prototype")
+//	public Feign.Builder feignBuilder() {
+//		return Feign.builder();
+//	}
 
 }

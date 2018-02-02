@@ -16,5 +16,8 @@ eureka:
 logging:
   level:
     com.example.demo.client.UserFeignClient: debug
-    
+
+feign:
+  hystrix:
+    enabled: true
     
