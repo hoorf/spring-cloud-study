@@ -24,6 +24,9 @@
 		<module>microservice-feign-with-hystrix</module>
 		<module>microservice-gateway-zuul</module>
 		<module>microservice-gateway-zuul-filter</module>
+		
+		<module>microservice-config-server</module>
+		<module>microservice-config-client</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
